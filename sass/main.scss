@@ -1,0 +1,14 @@
+$cave: slategrey;
+$blue: blue;
+
+body {
+  background: $cave;
+}
+
+h1{
+  text-align: center;
+}
+
+.main-container {
+  border:2px dashed $blue;
+}
