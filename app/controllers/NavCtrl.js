@@ -1,5 +1,6 @@
 app.controller("NavCtrl", function($scope){
-  $scope.navAddress =[
+  console.log("NavCtrl", $scope.navItems );
+  $scope.navItems =[
   {
     name: "Logout",
     url:"#/logout"

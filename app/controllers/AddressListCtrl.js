@@ -2,8 +2,8 @@ app.controller("AddressListCtrl", function($scope){
   $scope.addresses =[
     {
       id: 0,
-      name: "Fred",
-      lastName: "Flintsone",
+      name: "Fred Flintstone",
+      lastName: "Flintstone",
       isCurrent:true,
       lastUpdate:"01/01/2016",
       biz:"quarry",
@@ -26,7 +26,7 @@ app.controller("AddressListCtrl", function($scope){
     },
     {
       id: 2,
-      firstName: "John",
+      name: "John Beverly",
       lastName: "Beverly",
       isCurrent:false,
       lastUpdate:"02/02/1979",

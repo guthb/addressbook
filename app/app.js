@@ -12,7 +12,7 @@ app.config(function($routeProvider){
     }).
     when("/addressbook/details",{
       templateUrl:"partials/address-details.html",
-      controller:"AddresssViewCtrl"
+      controller:"AddressViewCtrl"
     }).
     otherwise("addressbook/list");
 

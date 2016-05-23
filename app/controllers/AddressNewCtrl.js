@@ -3,8 +3,8 @@ app.controller("AddressNewCtrl", function($scope){
   $scope.addresses =[
     {
       id: 0,
-      name: "Fred",
-      lastName: "Flintsone",
+      name: "Fred Flintstone",
+      lastName: "Flintstone",
       isCurrent:true,
       lastUpdate:"01/01/2016",
       biz:"quarry",
@@ -15,7 +15,7 @@ app.controller("AddressNewCtrl", function($scope){
     },
     {
       id: 1,
-      firstName: "George",
+      name: "George Washington",
       lastName: "Washington",
       isCurrent:true,
       lastUpdate:"07/04/1776",

@@ -9,14 +9,14 @@
     </div>
   </div>
 </div>
-<div ng-repeat="thingy in items | filter: searchText">  <!--for each loop-->
+<div ng-repeat="thingy in addresses | filter: searchText">  <!--for in loop-->
   <div class="panel panel-default">
     <div class="panel-body">
-      <div class="col-xs-1"></div>
-      <div class="col-xs-7">{{thingy.name}}</div>
-      <div class="col-xs-1">{{thingy.address}}</div>
-      <div class="col-xs-1">{{thingy.city}}</div>
-      <div class="col-xs-1">{{thingy.biz}}</div>
+      <!-- <div class="col-xs-1"></div> -->
+      <div class="col-xs-3">{{thingy.name}}</div>
+      <div class="col-xs-4">{{thingy.address}}</div>
+      <div class="col-xs-2">{{thingy.city}}</div>
+      <div class="col-xs-2">{{thingy.biz}}</div>
       <div class="col-xs-1">
         <button class="btn btn-danger">X</button>
       </div>
