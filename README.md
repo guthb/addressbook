@@ -2,7 +2,7 @@
 
 
 ### Description
-Build a angular single page application  of a  simple address book based on the understanding and excercises performed int the TODO list angular application
+Build a angular single page application  of a  simple address book based on the understanding and excercises performed in the TO DO list angular application example
 
 
 ### How to run:
@@ -16,9 +16,9 @@ This will show at:
 
 ### Application will have several branches that demonstrate the progression to a fully functional application:
 
-1. basic build with angular using controllers and html partial files with sass and gulp performing the taskrunners and error checking on application files.  Uses a  JSON file to be the backend data store
+1. Basic build with angular using controllers and html partial files with sass and gulp performing the taskrunners and error checking on application files.  Uses a  JSON file to be the backend data store
 
-1. replace JSON file with Firebase database as the backend data store
+1. Replace JSON file with Firebase database as the backend data store
 
 1. Delete and  Edit  capabliites  on  the list of addresss
 
@@ -33,7 +33,7 @@ This will show at:
 
 
 ### Screenshots
-![Screenshot](/img/filename.png)
+![Screenshot](/img/addressbook.png)
 
 
 ### Contributors:
