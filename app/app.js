@@ -1,4 +1,5 @@
 var app = angular.module("AddressBook", ["ngRoute"]);
+.constant("firebaseURL", "https://ng-bg-addressbook.firebaseio.com");
 
 app.config(function($routeProvider){
   $routeProvider.
@@ -10,10 +11,24 @@ app.config(function($routeProvider){
       templateUrl:"partials/address-new.html",
       controller:"AddressNewCtrl"
     }).
-    when("/addressbook/details",{
+
+    when('/addressbook/:addressId', {
       templateUrl:"partials/address-details.html",
       controller:"AddressViewCtrl"
     }).
+
+    // when("/addressbook/:details",{
+    //   templateUrl:"partials/address-details.html",
+    //   controller:"AddressViewCtrl"
+    // }).
+
+    when("/addressbook/:addressId/edit", {
+      templateUrl:"partials/address-new.html",
+      controller:"AddressEditCtrl"
+    }).
+
+
+
     otherwise("addressbook/list");
 
 });
