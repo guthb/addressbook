@@ -1,40 +1,29 @@
-app.controller("AddressListCtrl", function($scope){
-  $scope.addresses =[
-    {
-      id: 0,
-      name: "Fred Flintstone",
-      lastName: "Flintstone",
-      isCurrent:true,
-      lastUpdate:"01/01/2016",
-      biz:"quarry",
-      address:"1 sandstone way",
-      city:"bedrock",
-      facts:["hanna, barbera, dino, wilma"],
+app.controller("AddressListCtrl", function($scope, $http, $location, addressStorage){
+  $scope.addresses =[];
 
-    },
-    {
-      id: 1,
-      name: "George Washington",
-      lastName: "Washington",
-      isCurrent:true,
-      lastupdate:"07/04/1776",
-      biz:"leader",
-      address:"1 george dr",
-      city:"mount vernon",
-      facts:["tea, wigs, cannoes, martha"],
+  addressStorage.getAddressList().then(function(addressCollection){
+      console.log("itemcollection from promise ub getAddressList", addressCollection);
+      $scope.addresses = addressCollection;
+    });
 
-    },
-    {
-      id: 2,
-      name: "John Beverly",
-      lastName: "Beverly",
-      isCurrent:false,
-      lastUpdate:"02/02/1979",
-      biz:"musician",
-      address:"7 pushing up daisies",
-      city:"new york city",
-      facts:["bass, nancy, bollocks"]
+   // getItems();
+     $scope.addressDelete = function(addressId){
+      //console.log("itemId",itemId );
+      addressStorage.deleteAddress(addressId).then(function(response){
+            // $scope.items =[]
+          addressStorage.getAddressList().then(function(addressCollection){
+            $scope.addresses = addressCollection;
+          });
+      });
 
-    }
-  ];
+    };
+
+    $scope.inputChange = function(address){
+      addressStorage.updateIsCurrent(address)
+      .then(function(response){
+        console.log("response in inputchange", response);
+      });
+    };
+
 });
+

@@ -8,7 +8,8 @@
     <link rel="stylesheet" type="text/css" href="styles/main.css">
     <title>AddressBook NG App</title>
   </head>
-  <body ng-app="AddressBook">
+  <body ng-app="AddressBookApp">
+  <div ng-include="'./partials/nav-bar.html'"></div>
     <div >
       <div class ="row">
         <div class="col-xs-6 col-xs-offset-3">
@@ -26,6 +27,7 @@
     <script type="text/javascript" src="lib/bower_components/angular/angular.min.js"></script>
     <script type="text/javascript" src="lib/bower_components/angular-route/angular-route.min.js"></script>
     <script type="text/javascript" src="app/app.js"></script>
+    <script type="text/javascript" src="app/factories/AddressFactory.js"></script>
     <script type="text/javascript" src="app/controllers/NavCtrl.js"></script>
     <script type="text/javascript" src="app/controllers/AddressViewCtrl.js"></script>
     <script type="text/javascript" src="app/controllers/AddressNewCtrl.js"></script>

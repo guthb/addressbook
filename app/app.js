@@ -1,20 +1,27 @@
-var app = angular.module("AddressBook", ["ngRoute"]);
-.constant("firebaseURL", "https://ng-bg-addressbook.firebaseio.com");
+var app = angular.module('AddressBookApp', ['ngRoute'])
+.constant ('firebaseURL', 'https://ng-bg-addressbook.firebaseio.com/');
 
 app.config(function($routeProvider){
   $routeProvider.
-    when("/addressbook/list",{
-      templateUrl:"partials/address-list.html",
-      controller:"AddressListCtrl"
+    when('/addressbook/list',{
+      templateUrl:'partials/address-list.html',
+      controller:'AddressListCtrl'
     }).
-    when("/addressbook/new",{
-      templateUrl:"partials/address-new.html",
-      controller:"AddressNewCtrl"
+    when('/addressbook/new',{
+      templateUrl:'partials/address-new.html',
+      controller:'AddressNewCtrl'
     }).
 
+
+    when('/addressbook/:addressId/edit', {
+      templateUrl:'partials/address-new.html',
+      controller:'AddressEditCtrl'
+    }).
+
+
     when('/addressbook/:addressId', {
-      templateUrl:"partials/address-details.html",
-      controller:"AddressViewCtrl"
+      templateUrl:'partials/address-details.html',
+      controller:'AddressViewCtrl'
     }).
 
     // when("/addressbook/:details",{
@@ -22,13 +29,8 @@ app.config(function($routeProvider){
     //   controller:"AddressViewCtrl"
     // }).
 
-    when("/addressbook/:addressId/edit", {
-      templateUrl:"partials/address-new.html",
-      controller:"AddressEditCtrl"
-    }).
 
 
-
-    otherwise("addressbook/list");
+    otherwise('addressbook/list');
 
 });

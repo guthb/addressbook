@@ -8,8 +8,8 @@ app.controller("AddressViewCtrl", function($scope, $http, $routeParams, addressS
     console.log("addressCollection from promise", addressCollection);
     $scope.addresses = addressCollection;
 
-    $scope.selcetedAddress = $scope.addresses.filter(function(address){
-      return item.id === $routeParams.addressId;
+    $scope.selectedAddress = $scope.addresses.filter(function(address){
+      return address.id === $routeParams.addressId;
     })[0] ;//return the first thing in the array
   });
 

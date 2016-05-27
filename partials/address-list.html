@@ -9,17 +9,73 @@
     </div>
   </div>
 </div>
-<div ng-repeat="thingy in addresses | filter: searchText">  <!--for in loop-->
-  <div class="panel panel-default">
+
+<h3>Addresses Current</h3>
+<div class="panel panel-default">
     <div class="panel-body">
-      <!-- <div class="col-xs-1"></div> -->
-      <div class="col-xs-3">{{thingy.name}}</div>
-      <div class="col-xs-4">{{thingy.address}}</div>
+      <div class="col-xs-1"></div>
+      <div class="col-xs-5">Name</div>
+      <div class="col-xs-2">Address</div>
+      <div class="col-xs-3">City</div>
+      <div class="col-xs-1"></div>
+    </div>
+</div>
+
+<div ng-repeat="thingy in addresses | filter: searchText">  <!--for each loop-->
+  <div class="panel panel-default" ng-hide="thingy.isCurrent">
+    <div class="panel-body">
+      <div class="col-xs-1"><input type="checkbox" ng-model="thingy.isCurrent" ng-change="inputChange(thingy)"/></div>
+      <div class="col-xs-5"><a ng-href="#/addressbook/{{thingy.id}}">{{thingy.name}}</a></div>
+      <div class="col-xs-2">{{thingy.location}}</div>
       <div class="col-xs-3">{{thingy.city}}</div>
-      <div class="col-xs-1">{{thingy.biz}}</div>
       <div class="col-xs-1">
-        <button class="btn btn-danger">X</button>
+        <button class="btn btn-danger" ng-click="addressDelete(thingy.id)"><i class="fa fa-trash" aria-hidden="true"></i></button>
       </div>
     </div>
   </div>
 </div>
+
+
+<h3>Addresses Needing Updates</h3>
+
+<div class="panel panel-default">
+    <div class="panel-body">
+      <div class="col-xs-1"></div>
+      <div class="col-xs-5">Name</div>
+      <div class="col-xs-2">Address</div>
+      <div class="col-xs-3">City</div>
+      <div class="col-xs-1"></div>
+    </div>
+</div>
+
+
+<div ng-repeat="thingy in addresses | filter: {isCurrent: true}">  <!--for each loop-->
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <div class="col-xs-1"><input type="checkbox" ng-model="thingy.isCurrent" ng-change="inputChange(thingy)"/></div>
+      <div class="col-xs-5"><a ng-href="#/addressbook/{{thingy.id}}">{{thingy.name}}</a></div>
+      <div class="col-xs-2">{{thingy.location}}</div>
+      <div class="col-xs-3">{{thingy.city}}</div>
+      <div class="col-xs-1"></div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

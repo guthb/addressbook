@@ -1,1 +1,14 @@
-<h1>Address Details</h1>
+<h1>{{selectedAddress.lastName}}</h1>
+
+<button class="btn btn-info"><a ng-href="#/addressbook/{{selectedAddress.id}}/edit">Edit</a></button>
+
+<h2>Name:{{selectedAddress.name}}</h2>
+<h2>Last Name:{{selectedAddress.lastName}}</h2>
+<h2>Updated:{{selectedAddress.lastUpdate}}</h2>
+<h2>Buisness:{{selectedAddress.biz}}</h2>
+<h2>Address:{{selectedAddress.location}} </h2>
+<h2>City:{{selectedAddress.city}} </h2>
+<h2>Facts:{{selectedAddress.facts}} </h2>
+<h2>Current:{{(selectedAddress.isCurrent ? "yes" : "no")}}</h2>
+
+

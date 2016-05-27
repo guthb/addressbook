@@ -1,4 +1,3 @@
-'use strict';
 app.factory("addressStorage", function($q, $http, firebaseURL){
 
   var getAddressList = function(){
@@ -8,10 +7,10 @@ app.factory("addressStorage", function($q, $http, firebaseURL){
           .success(function(addressObject){
           // var itemCollection = itemObject.items; //local
             var addressCollection = addressObject;
-            console.log("addressbject", addressObject);
+            console.log("addressObject", addressObject);
           // returns all the key in an array
             Object.keys(addressCollection).forEach(function(key){
-            // goes through every key in this array and writes back to the object the id as  a property
+            // goes through every key in this array and writes back to the object the id as a property
               addressCollection[key].id=key;
               addresses.push(addressCollection[key]);
              });
@@ -93,7 +92,7 @@ app.factory("addressStorage", function($q, $http, firebaseURL){
   };
 
 
-  var updateLastStatus = function(newAddress){
+  var updateIsCurrent = function(newAddress){
     return $q(function(resolve, reject) {
       $http.put(
         firebaseURL + `addresses/${newAddress.id}.json`,
@@ -121,8 +120,8 @@ app.factory("addressStorage", function($q, $http, firebaseURL){
           postNewAddress:postNewAddress,
           getSingleAddress:getSingleAddress,
           putAddress:putAddress,
-          updateLastStatus:updateLastStatus
-  };
+          updateIsCurrent:updateIsCurrent
+    };
 
 
 });
