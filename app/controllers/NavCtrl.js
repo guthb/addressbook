@@ -1,2 +1,2 @@
-app.controller("NavCtrl", function($scope){
-});
+// app.controller("NavCtrl", function($scope){
+// });

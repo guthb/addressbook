@@ -2,7 +2,7 @@ app.controller("AddressListCtrl", function($scope, $http, $location, addressStor
   $scope.addresses =[];
 
   addressStorage.getAddressList().then(function(addressCollection){
-      console.log("itemcollection from promise ub getAddressList", addressCollection);
+      console.log("Address collection from promise ub getAddressList", addressCollection);
       $scope.addresses = addressCollection;
     });
 

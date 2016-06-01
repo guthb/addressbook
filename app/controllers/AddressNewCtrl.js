@@ -1,6 +1,7 @@
+'use strict';
 app.controller("AddressNewCtrl", function($scope, $http, $location, addressStorage){
   $scope.title = "New Address";
-  $scope.submitButtonText = "Update New Item";
+  $scope.submitButtonText = "Update New Address";
   $scope.newAddress ={
     name: "",
     lastName: "",
@@ -8,7 +9,8 @@ app.controller("AddressNewCtrl", function($scope, $http, $location, addressStora
     biz: "",
     location: "",
     city: "",
-    facts: ""
+    facts: "",
+    uid:""
   };
 
   $scope.addNewAddress = function(){

@@ -1,7 +1,9 @@
-app.factory("addressStorage", function($q, $http, firebaseURL){
+app.factory("addressStorage", function($q, $http, firebaseURL, AuthFactory){
 
   var getAddressList = function(){
     var addresses = [];
+    let user = AuthFactory.getUser();
+    console.log("user from firebaase", user );
       return $q(function(resolve, reject){
         $http.get(firebaseURL + `addresses.json`)  //firebaase
           .success(function(addressObject){
@@ -11,7 +13,9 @@ app.factory("addressStorage", function($q, $http, firebaseURL){
           // returns all the key in an array
             Object.keys(addressCollection).forEach(function(key){
             // goes through every key in this array and writes back to the object the id as a property
+              //console.log("before", addressCollection[key] );
               addressCollection[key].id=key;
+              //console.log("after", addressCollection[key]} );
               addresses.push(addressCollection[key]);
              });
             resolve(addresses);
@@ -44,7 +48,8 @@ app.factory("addressStorage", function($q, $http, firebaseURL){
             biz: newAddress.biz,
             location: newAddress.location,
             city: newAddress.city,
-            facts: newAddress.facts
+            facts: newAddress.facts,
+            uid:user.uid
           })
       )
       .success(
@@ -80,7 +85,8 @@ app.factory("addressStorage", function($q, $http, firebaseURL){
           biz: newAddress.biz,
           location: newAddress.location,
           city: newAddress.city,
-          facts: newAddress.facts
+          facts: newAddress.facts,
+          uid:user.uid
         })
       )
       .success(
