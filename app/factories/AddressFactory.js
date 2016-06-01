@@ -1,3 +1,4 @@
+'use strict';
 app.factory("addressStorage", function($q, $http, firebaseURL, AuthFactory){
 
   var getAddressList = function(){
@@ -5,7 +6,8 @@ app.factory("addressStorage", function($q, $http, firebaseURL, AuthFactory){
     let user = AuthFactory.getUser();
     console.log("user from firebaase", user );
       return $q(function(resolve, reject){
-        $http.get(firebaseURL + `addresses.json`)  //firebaase
+        $http.get(`${firebaseURL}addresses.json?orderBy="uid"&equalTo="${user.uid}"`)  //firebaase
+          
           .success(function(addressObject){
           // var itemCollection = itemObject.items; //local
             var addressCollection = addressObject;
@@ -38,6 +40,7 @@ app.factory("addressStorage", function($q, $http, firebaseURL, AuthFactory){
   };
 
   var postNewAddress = function(newAddress){
+    let user = AuthFactory.getUser()
     return $q(function(resolve, reject) {
       $http.post(
         firebaseURL + `addresses.json`,
@@ -75,6 +78,7 @@ app.factory("addressStorage", function($q, $http, firebaseURL, AuthFactory){
 
 
   var putAddress = function(addressId, newAddress){
+    let user = AuthFactory.getUser()
     return $q(function(resolve, reject) {
       $http.put(
         firebaseURL + `addresses/${addressId}.json`,
@@ -99,6 +103,7 @@ app.factory("addressStorage", function($q, $http, firebaseURL, AuthFactory){
 
 
   var updateIsCurrent = function(newAddress){
+    let user = AuthFactory.getUser()
     return $q(function(resolve, reject) {
       $http.put(
         firebaseURL + `addresses/${newAddress.id}.json`,
@@ -109,7 +114,8 @@ app.factory("addressStorage", function($q, $http, firebaseURL, AuthFactory){
           biz: newAddress.biz,
           location: newAddress.location,
           city: newAddress.city,
-          facts: newAddress.facts
+          facts: newAddress.facts,
+          uid:user.uid
         })
       )
       .success(

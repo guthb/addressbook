@@ -31,17 +31,16 @@ app.config(function($routeProvider){
       resolve: {isAuth}
     }).
 
-
-    when('/addressbook/:addressId/edit', {
-      templateUrl:'partials/address-new.html',
-      controller:'AddressEditCtrl',
+    when('/addressbook/:addressId', {
+      templateUrl:'partials/address-details.html',
+      controller:'AddressViewCtrl',
       resolve: {isAuth}
     }).
 
 
-    when('/addressbook/:addressId', {
-      templateUrl:'partials/address-details.html',
-      controller:'AddressViewCtrl',
+    when('/addressbook/:addressId/edit', {
+      templateUrl:'partials/address-new.html',
+      controller:'AddressEditCtrl',
       resolve: {isAuth}
     }).
 
@@ -55,7 +54,6 @@ app.config(function($routeProvider){
       controller:"LoginCtrl"
     }).
 
-
     otherwise('/');
 
 
@@ -63,9 +61,13 @@ app.config(function($routeProvider){
 
 app.run(($location) => {
   let addressRef = new Firebase('https://ng-bg-addressbook.firebaseio.com/');
+  addressRef.unauth();
   addressRef.onAuth( authData => {
+    console.log("RUN");
     if(!authData) {
+      console.log("after auth check");
       $location.path('/login');
     }
   }) //firebase method
-})
+});
+

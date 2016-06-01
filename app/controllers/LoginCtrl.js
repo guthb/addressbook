@@ -1,5 +1,5 @@
 'use strict';
-app.controller("LoginCtrl", function($scope, $location, firebaseURL, AuthFactory){
+app.controller("LoginCtrl", function($scope, $rootScope, $location, firebaseURL, AuthFactory){
 
   // $scope.welcome = "hello world";
 
@@ -13,6 +13,7 @@ app.controller("LoginCtrl", function($scope, $location, firebaseURL, AuthFactory
 
   if ($location.path() === '/logout'){
     ref.unauth();  //firebase method that kills token
+    $rootScope.isActive = false;
   }
 
   $scope.register = () => {
@@ -39,6 +40,7 @@ app.controller("LoginCtrl", function($scope, $location, firebaseURL, AuthFactory
       // $scope.hasUser =true;
       $location.path("/");
       $scope.$apply();
+      $rootScope.isActive = true;
     })
  };
 
